@@ -8,5 +8,13 @@
 </head>
 <body>
   <div> hello world </div>
+  <div class="btn">关闭</div>
+  <script>
+    let eleBtn = document.querySelector('.btn');
+    eleBtn.addEventListener('click',()=>{
+      window.opener = null;
+      window.open('about:black','_top').close();
+    },false)
+  </script>
 </body>
 </html>
