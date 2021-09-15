@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <div> hello world </div>
   <div class="btn">关闭</div>
   <script>
     let eleBtn = document.querySelector('.btn');
-    eleBtn.addEventListener('click',()=>{
-      window.opener = null;
-      window.open('about:black','_top').close();
-    },false)
+    eleBtn.addEventListener('click', () => {
+      var userAgent = navigator.userAgent;
+      if (userAgent.indexOf("Firefox") != -1 || userAgent.indexOf("Chrome") != -1) {
+        window.location.href = "about:blank";
+      } else if (userAgent.indexOf('Android') > -1 || userAgent.indexOf('Linux') > -1) {
+        window.opener = null;
+        window.open("about:blank", "_self").close();
+      } else {
+        window.opener = null;
+        window.open("about:blank", "_self");
+        window.close();
+      }
+    }, false)
   </script>
 </body>
+
 </html>
