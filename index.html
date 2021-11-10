@@ -1,1 +1,38 @@
-<!DOCTYPE html><html lang=""><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" href="/favicon.ico"><title>hello-world</title><link href="/js/about.3abf7982.js" rel="prefetch"><link href="/css/app.739948af.css" rel="preload" as="style"><link href="/js/app.1146575a.js" rel="preload" as="script"><link href="/js/chunk-vendors.b12d75d0.js" rel="preload" as="script"><link href="/css/app.739948af.css" rel="stylesheet"></head><body><noscript><strong>We're sorry but hello-world doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"></div><script src="/js/chunk-vendors.b12d75d0.js"></script><script src="/js/app.1146575a.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function getMedia(){
+      if (navigator.mediaDevices.getUserMedia || navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia) {
+        getUserMedia({video:true,audio:true})
+      } else {
+        alert('不支持')
+      }
+    }
+    function getUserMedia(params) {
+      if(navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia(params).then(stream=>{success(stream)}).catch(err=>{error(err)})
+      } else if (navigator.webkitGetUserMedia){
+        navigator.webkitGetUserMedia(params).then(stream=>{success(stream)}).catch(err=>{error(err)})
+      } else if (navigator.mozGetUserMedia) {
+        navigator.mozGetUserMedia(params).then(stream=>{success(stream)}).catch(err=>{error(err)})
+      } else if (navigator.getUserMedia) {
+        navigator.getUserMedia(params).then(stream=>{success(stream)}).catch(err=>{error(err)})
+      }
+    }
+    function success(stream){
+      console.log('result',stream)
+    }
+    function error(error){
+      console.log('error',error)
+    }
+    getMedia();
+  </script>
+</body>
+</html>
