@@ -52,7 +52,6 @@
       alert('success')
       video.srcObject = stream;
       //播放视频
-      video.play();
     }
 
     //异常的回调函数
@@ -71,7 +70,11 @@
     //注册拍照按钮的单击事件
     document.getElementById("capture").addEventListener("click", function () {
       //绘制画面
+      video.play();
+      setTimeout(() => {
       context.drawImage(video, 0, 0, 480, 320);
+        
+      }, 2000);
     });
   </script>
 </body>
