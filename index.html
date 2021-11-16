@@ -45,7 +45,7 @@
       // var CompatibleURL = window.URL || window.webkitURL;
       // //将视频流设置为video元素的源
       // video.src = CompatibleURL.createObjectURL(stream);   // 此处的代码将会报错  解决的办法是将video的srcObject属性指向stream即可
-      video.src = stream;
+      video.srcObject = stream;
       //播放视频
       video.play();
     }
