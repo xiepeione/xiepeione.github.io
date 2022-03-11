@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2022-03-11 10:39:52
- * @LastEditTime: 2022-03-11 17:58:06
+ * @LastEditTime: 2022-03-11 18:00:37
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /xiepeione.github.io/awaken.html
@@ -28,11 +28,11 @@
       const wait = 3000
       // 是否进入后台
       const hidden = false
-      location = schemeUrl
+      location.href = schemeUrl
       // 如果一定时间内，页面没有隐藏，则跳转到下载页
       setTimeout(() => {
         if (!hidden) {
-          location = downloadUrl
+          location.href = downloadUrl
         }
       }, wait)
       // 页面可见性变化事件
