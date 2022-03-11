@@ -1,40 +1,48 @@
 <!--
  * @Author: your name
  * @Date: 2022-03-11 10:39:52
- * @LastEditTime: 2022-03-11 17:34:47
+ * @LastEditTime: 2022-03-11 17:58:06
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /xiepeione.github.io/awaken.html
 -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <a href="pabl://pingan.com.cn">打开平安保理</a>
   <button class="btn">打开平安保理</button>
   <script>
     var btn = document.querySelector(".btn");
     let timeId;
-    btn.addEventListener("click",handleClick,false);
-    function handleClick(e) {
-      window.location.href = "pabl://pingan.com.cn";
-      timeId = setTimeout(()=>{ 
-        window.location.href = "https://www.baidu.com";
-      },3000)
+    function checkOutApp() {
+      const schemeUrl = 'pabl://pingan.com.cn';
+      const downloadUrl = 'http://www.baidu.com'
+      const wait = 3000
+      // 是否进入后台
+      const hidden = false
+      location = schemeUrl
+      // 如果一定时间内，页面没有隐藏，则跳转到下载页
+      setTimeout(() => {
+        if (!hidden) {
+          location = downloadUrl
+        }
+      }, wait)
+      // 页面可见性变化事件
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden) {
+          hidden = true
+        }
+      });
     }
-    document.addEventListener('visibilitychange webkitvisibilitychange',()=>{
-      if (document.hidden || document.webkitHidden) {
-        clearTimeout(timeId)
-      }
-    })
-    window.addEventListener('pagehide',()=>{
-      clearTimeout(timeId)
-    })
   </script>
 </body>
+
 </html>
